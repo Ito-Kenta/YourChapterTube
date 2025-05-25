@@ -1,5 +1,6 @@
 import React from "react";
 import { Chapter } from "@/types/chapter";
+import Image from 'next/image';
 
 type Props = {
     chapter: Chapter;
@@ -14,12 +15,12 @@ export const ChapterPlayButton: React.FC<Props> = ({chapter, handleClick}) => {
             style={{ height: "100%" }}
             onClick={() => { handleClick(chapter) }}
         >
-            <img
+            <Image
                 src="/play.svg"
                 alt="Play"
                 className="group-hover:hidden h-10"
             />
-            <img
+            <Image
                 src="/play_dark.svg"
                 alt="Play (hover)"
                 className="hidden group-hover:inline h-10"
@@ -36,7 +37,7 @@ export const ChapterLoopButton: React.FC<Props> = ({chapter, handleClick}) => {
             style={{ height: "100%" }}
             onClick={() => { handleClick(chapter) }}
         >
-            <img
+            <Image
                 src={chapter.isLoop ? "/loop_play.svg" : "/loop_play_disable.svg"}
                 alt="Loop"
                 className="h-10 
@@ -55,7 +56,7 @@ export const ChapterDeleteButton: React.FC<Props> = ({chapter, handleClick}) => 
             style={{ height: "100%" }}
             onClick={() => { handleClick(chapter) }}
         >
-            <img
+            <Image
                 src="./delete.svg"
                 alt="Delete"
                 className="h-10 

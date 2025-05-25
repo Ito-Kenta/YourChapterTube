@@ -1,3 +1,4 @@
+/// <reference types="youtube" />
 import React, { Dispatch, SetStateAction } from 'react';
 import { Chapter } from "@/types/chapter"
 import { ChapterDeleteButton, ChapterLoopButton, ChapterPlayButton } from "@/components/ChapterPlayButton";
@@ -8,7 +9,7 @@ import { handleSeek } from '@/utils/youtubeUtils';
 type ChapterListProps = {
     chapterList: Chapter[];
     onChapterChange: Dispatch<SetStateAction<Chapter[]>>;
-    playerRef: React.RefObject<any>;
+    playerRef: React.RefObject<YT.Player | null>;
 }
 const DisplayChapterList: React.FC<ChapterListProps> = ({chapterList, onChapterChange, playerRef}) => {
     const handlePlay = (chapter: Chapter) => {

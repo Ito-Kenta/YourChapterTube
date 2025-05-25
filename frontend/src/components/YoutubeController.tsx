@@ -1,17 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import { buttonBase, gradientTextBase } from "@/styles/globalStyles";
-import { onPlayerReady, handlePlay, handlePause, handleStop, getTime, handleGetTime, handleSeek} from '@/utils/youtubeUtils';
+import { getTime, handleSeek} from '@/utils/youtubeUtils';
 import YoutubePlayer from '@/components/YoutubePlayer';
 import DisplayChapterList from "@/components/DisplayChapterList";
 import MakeChapterControll from '@/components/MakeChapterControll';
-import { Chapter } from "@/types/chapter";
 import { useVideoController } from '@/context/VideoControllerContext';
 import SetVideoUrl from './SetVideoUrl';
 import SaveVideoProjects from '@/components/SaveVideoProject';
 
 
 const YoutubeController: React.FC = () => {
-    const playerRef = useRef<any>(null);
+    const playerRef = useRef<YT.Player | null>(null);
     const videoControl = useVideoController();
 
     useEffect(() => {
@@ -22,9 +20,12 @@ const YoutubeController: React.FC = () => {
                 if (activeChapter?.startTime == undefined || 
                     activeChapter?.endTime == undefined
                 ) {} else {
-                    if (activeChapter && 
-                        activeChapter?.isLoop && 
-                        currentTime > activeChapter.endTime) {
+                    if (
+                        activeChapter &&
+                        activeChapter?.isLoop &&
+                        currentTime !== undefined &&
+                        currentTime > activeChapter.endTime
+                    ) {
                         handleSeek(playerRef, activeChapter.startTime);
                     }
                 }

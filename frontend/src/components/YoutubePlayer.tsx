@@ -8,11 +8,10 @@ type PlayerProps = {
         width: number,
         height: number
     }
-    playerRef: React.RefObject<any>
+    playerRef: React.RefObject<YT.Player | null>
 };
 
 export const YoutubePlayer: React.FC<PlayerProps> = ({videoId, size, playerRef}) => {
-    const onReady = onPlayerReady(playerRef);
     return (
         <YouTube
             videoId={videoId}

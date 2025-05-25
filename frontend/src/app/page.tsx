@@ -2,7 +2,6 @@
 import React from "react";
 import Link from 'next/link';
 import YoutubeController from "@/components/YoutubeController";
-import { VideoControllerProvider,  } from "@/context/VideoControllerContext";
 import { gradientTextBase } from "@/styles/globalStyles";
 
 const StartPage = () => {

@@ -2,9 +2,9 @@ import React from "react";
 import { buttonBase } from "@/styles/globalStyles"
 
 type ChapterButtonProps = {
-    buttonText: String;
+    buttonText: string;
     onClick?: () => void;
-    addStyle?: String;
+    addStyle?: string;
 };
 
 const ChapterButton: React.FC<ChapterButtonProps> = ({ buttonText, onClick, addStyle="w-30"}) => {

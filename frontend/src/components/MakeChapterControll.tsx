@@ -1,13 +1,13 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { ulid } from "ulid";
 import ChapterButton from '@/components/ChapterButton';
-import { getTime, getDuration } from '@/utils/youtubeUtils';
+import { getTime } from '@/utils/youtubeUtils';
 import { Chapter } from '@/types/chapter';
 import { transformNumberToTime } from '@/utils/chapterUtils';
 
 
 type MakeChapterProps = {
-    playerRef: React.RefObject<any>
+    playerRef: React.RefObject<YT.Player | null>
     onChange: Dispatch<SetStateAction<Chapter[]>>;
 }
 

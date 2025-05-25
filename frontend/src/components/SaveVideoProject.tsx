@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useVideoProjectsContext, VideoProject } from "@/context/VideoProjectsContext";
-import { VideoControllerProvider, useVideoController } from "@/context/VideoControllerContext";
+import { useVideoController } from "@/context/VideoControllerContext";
 import { buttonBase } from "@/styles/globalStyles";
 
 
@@ -8,11 +8,6 @@ const SaveVideoProjects: React.FC = () => {
     const { currentProject, setCurrentName, saveProject } = useVideoProjectsContext();
     const [inputName, setInputName] = useState(currentProject?.name || "");
     const videoControl = useVideoController();
-    const [tmpProject, setTmpProject] = useState<VideoProject>({
-        name: "",
-        chapterList: [],
-        videoId: "",
-    });
 
     // currentProjectが切り替わったらinputも同期
     useEffect(() => {
