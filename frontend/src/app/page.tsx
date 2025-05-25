@@ -9,7 +9,7 @@ const StartPage = () => {
     <div
       className=''
     >
-      <h1 className={gradientTextBase}>Youtube Player</h1>
+      <h1 className={gradientTextBase}>YourChapterTube</h1>
       <Link href="/chapters" className="text-blue-500">保存チャプター一覧</Link>
       <YoutubeController />
       {/* h1n6kPZhmOc */}
