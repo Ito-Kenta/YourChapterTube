@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useVideoProjectsContext, VideoProject } from "@/context/VideoProjectsContext";
+import { useVideoProjectsContext } from "@/context/VideoProjectsContext";
 import { useVideoController } from "@/context/VideoControllerContext";
 import { buttonBase } from "@/styles/globalStyles";
 
