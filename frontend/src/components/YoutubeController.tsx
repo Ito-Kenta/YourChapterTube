@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef } from 'react';
 import { getTime, handleSeek} from '@/utils/youtubeUtils';
 import YoutubePlayer from '@/components/YoutubePlayer';

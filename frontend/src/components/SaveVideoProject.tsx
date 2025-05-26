@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from "react";
 import { useVideoProjectsContext } from "@/context/VideoProjectsContext";
 import { useVideoController } from "@/context/VideoControllerContext";
