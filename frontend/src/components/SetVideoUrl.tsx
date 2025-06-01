@@ -18,20 +18,19 @@ const SetVideoUrl: React.FC<Props> = ({ onChange }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <span className="text-black mx-1">動画URL</span>
+        <form onSubmit={handleSubmit}
+            className="w-full flex flex-row gap-1 px-1 mb-1 sm:w-180"
+        >
             <input
-            type="text"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder="動画URLを入力"
-            className="m-1 w-100 px-2 py-1 
-                        bg-blue-400/50 text-black
-                        border border-blue-400"
+                type="text"
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                placeholder="動画URLを入力"
+                className="flex-1 px-1 bg-gray-400/50 text-black border rounded"
             />
             <button
-            type="submit"
-            className="ml-2 px-4 py-1 bg-blue-500 rounded "
+                type="submit"
+                className="px-2 py-0.5 w-13 bg-gray-500 rounded"
             >
             決定
             </button>

@@ -1,5 +1,4 @@
 import React from "react";
-import { buttonBase } from "@/styles/globalStyles"
 
 type ChapterButtonProps = {
     buttonText: string;
@@ -7,12 +6,13 @@ type ChapterButtonProps = {
     addStyle?: string;
 };
 
-const ChapterButton: React.FC<ChapterButtonProps> = ({ buttonText, onClick, addStyle="w-30"}) => {
+const ChapterButton: React.FC<ChapterButtonProps> = ({ buttonText, onClick}) => {
     return (
         <button
             type="button"
             onClick={onClick}
-            className={`${buttonBase} mt-1 ${addStyle}`}
+            className="w-25 px-1
+                    bg-slate-500 text-white hover:bg-slate-400 rounded"
         >
             {buttonText}
         </button>
@@ -20,3 +20,16 @@ const ChapterButton: React.FC<ChapterButtonProps> = ({ buttonText, onClick, addS
 };
 
 export default ChapterButton;
+
+export const SubmitChapterButton: React.FC<ChapterButtonProps> = ({ buttonText, onClick}) => {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className="w-25 px-1
+                    bg-blue-500 text-white hover:bg-blue-400 rounded"
+        >
+            {buttonText}
+        </button>
+    );
+};

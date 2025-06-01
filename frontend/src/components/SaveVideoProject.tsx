@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { useVideoProjectsContext } from "@/context/VideoProjectsContext";
 import { useVideoController } from "@/context/VideoControllerContext";
-import { buttonBase } from "@/styles/globalStyles";
 
 
 const SaveVideoProjects: React.FC = () => {
@@ -29,35 +28,40 @@ const SaveVideoProjects: React.FC = () => {
     };
 
     return (
-        <div className="text-black flex flex-col sm:flex-row gap-2 w-full">
+        <div className="w-full sm:w-[800px] flex flex-row gap-1 mx-1 mt-1">
             <form
                 onSubmit={e => {
                     e.preventDefault();
                     setCurrentName(inputName);
                 }}
-                className="flex-1 min-w-0"
+                className="flex gap-1 flex-1"
             >
                 <input
                     type="text"
                     value={inputName}
                     onChange={(e) => setInputName(e.target.value)}
-                    placeholder="プロジェクト名を入力"
-                    className="border rounded bg-blue-100 ml-2 mt-1 w-full min-w-0"
+                    placeholder="設定の保存名を入力"
+                    className="min-w-0 flex-1 
+                                px-1 text-black 
+                                border border-black rounded 
+                                bg-gray-300"
                 />
                 <button
                     type="submit"
-                    className="ml-2 px-4 py-1 bg-blue-500 text-white rounded w-full sm:w-auto mt-2 sm:mt-0"
+                    className="w-16 px-2 py-0.5
+                        bg-gray-500 text-white rounded"
                 >
                     確定
                 </button>
             </form>
 
             <button
-                className={buttonBase + " w-full sm:w-auto mt-2 sm:mt-0"}
+                className="w-25 px-2 py-0.5 mr-3
+                        bg-gray-500 text-white rounded"
                 type="button"
                 onClick={handleSaveProject}
             >
-                現在の設定を保存
+                設定を保存
             </button>
         </div>
 
