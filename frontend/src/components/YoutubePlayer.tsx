@@ -17,13 +17,14 @@ export const YoutubePlayer: React.FC<PlayerProps> = ({videoId, size, playerRef})
             videoId={videoId}
             onReady={onPlayerReady(playerRef)}
             opts={{
-                height: size.width,
-                width: size.height,
+                width: "100%",      // ここを100%に
+                height: "100%", // 高さは親divのaspect-ratioで調整
                 playerVars: {
                     autoplay: 0,
                     controls: 1,
                 },
             }}
+            className="w-full h-full"
         />
     );
 };
