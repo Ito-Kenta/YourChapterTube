@@ -47,14 +47,16 @@ const YoutubeController: React.FC = () => {
     }, [videoControl.chapterList]);
 
     return (
-        <div>
+        <div className="w-full">
             <SetVideoUrl 
                 onChange={videoControl.setVideoId}
             />
-            <YoutubePlayer 
+            <YoutubePlayer
                 videoId={videoControl.videoId}
-                size={{ width: 560, height: 1000}}
-                playerRef={playerRef}
+                playerRef={playerRef} size={{
+                    width: 0,
+                    height: 0
+                }}
             />
             <SaveVideoProjects />
             <MakeChapterControll 
@@ -62,11 +64,13 @@ const YoutubeController: React.FC = () => {
                 onChange={videoControl.setChapterList}
             />
             {videoControl.chapterList && videoControl.chapterList[0] && (
-                <DisplayChapterList
-                    chapterList={videoControl.chapterList}
-                    onChapterChange={videoControl.setChapterList}
-                    playerRef={playerRef}
-                />
+                <div className="overflow-x-auto">
+                    <DisplayChapterList
+                        chapterList={videoControl.chapterList}
+                        onChapterChange={videoControl.setChapterList}
+                        playerRef={playerRef}
+                    />
+                </div>
             )}
         </div>
     );

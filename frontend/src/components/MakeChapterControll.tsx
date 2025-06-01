@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { ulid } from "ulid";
-import ChapterButton from '@/components/ChapterButton';
+import ChapterButton, { SubmitChapterButton } from '@/components/ChapterButton';
 import { getTime } from '@/utils/youtubeUtils';
 import { Chapter } from '@/types/chapter';
 import { transformNumberToTime } from '@/utils/chapterUtils';
@@ -11,16 +11,16 @@ type MakeChapterProps = {
     onChange: Dispatch<SetStateAction<Chapter[]>>;
 }
 
-const MakeChapterControll: React.FC<MakeChapterProps> = ({playerRef, onChange}) => {
+const MakeChapterControll: React.FC<MakeChapterProps> = ({ playerRef, onChange }) => {
     const [startTime, setStartTime] = React.useState<number | undefined>(undefined);
     const [endTime, setEndTime] = React.useState<number | undefined>(undefined);
     const [description, setDescription] = React.useState<string>("");
-    
+
     const handleSetStartTime = () => {
         const time = getTime(playerRef);
         setStartTime(time);
     };
-    const handleSetEndTime = () => { 
+    const handleSetEndTime = () => {
         const time = getTime(playerRef);
         setEndTime(time);
     };
@@ -49,39 +49,45 @@ const MakeChapterControll: React.FC<MakeChapterProps> = ({playerRef, onChange}) 
 
     return (
         <div className='text-black'>
-            <div className='flex'>
-                <ChapterButton
-                    buttonText="開始セット"
-                    onClick={() => handleSetStartTime()}
-                />
-                <span className={displayTimeStyle}>{startTime !== undefined ? transformNumberToTime(startTime) : '未設定'}</span>
-                <span className='mx-3 mt-2'>{"-"}</span>
-                <ChapterButton
-                    buttonText="終了セット"
-                    onClick={() => handleSetEndTime()}
-                />
-                <span className={displayTimeStyle}>{endTime !== undefined ? transformNumberToTime(endTime) : '未設定'}</span>
+            <div className='flex flex-col sm:flex-row w-full gap-1 mx-1 mt-1 sm:w-[800px]'>
+                <div className='flex gap-1'>
+                    <ChapterButton
+                        buttonText="開始セット"
+                        onClick={() => handleSetStartTime()}
+                    />
+                    <ChapterButton
+                        buttonText="終了セット"
+                        onClick={() => handleSetEndTime()}
+                    />
+                </div>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
                         setDescription(description);
                     }}
+                    className='flex flex-1 mt-1 ml-2'
                 >
-                    <label>説明</label>
-                    <input 
+                    <label className='w-10'>説明:</label>
+                    <input
                         type="text"
-                        className='border mt-2'
+                        className='border rounded flex-1 px-1 py-0.5 bg-slate-300'
+                        placeholder='チャプターの説明を入力してください'
                         value={description}
                         onChange={(e) => {
                             setDescription(e.target.value);
                         }}
                     ></input>
                 </form>
-            <ChapterButton 
-                buttonText="Submit"
-                onClick={() => handleAddChapter()}
-                addStyle="w-30 bg-sky-600 text-white border-sky-700"
-            />
+            </div>
+            <div className='flex mt-1'>
+                <span className={displayTimeStyle}>{startTime !== undefined ? transformNumberToTime(startTime) : '未設定'}</span>
+                <span className='mx-3 mt-2'>{"-"}</span>
+                <span className={displayTimeStyle}>{endTime !== undefined ? transformNumberToTime(endTime) : '未設定'}</span>
+                <SubmitChapterButton
+                    buttonText="Submit"
+                    onClick={() => handleAddChapter()}
+                    addStyle="bg-sky-600 text-white border-sky-700"
+                />
             </div>
         </div>
     );

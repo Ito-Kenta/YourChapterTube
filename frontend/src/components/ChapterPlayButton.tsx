@@ -19,11 +19,15 @@ export const ChapterPlayButton: React.FC<Props> = ({chapter, handleClick}) => {
                 src="/play.svg"
                 alt="Play"
                 className="group-hover:hidden h-10"
+                width={30}
+                height={30}
             />
             <Image
                 src="/play_dark.svg"
                 alt="Play (hover)"
                 className="hidden group-hover:inline h-10"
+                width={30}
+                height={30}
             />
         </button>
     );
@@ -43,6 +47,8 @@ export const ChapterLoopButton: React.FC<Props> = ({chapter, handleClick}) => {
                 className="h-10 
                             group-hover:scale-110 group-hover:drop-shadow-lg group-hover:brightness-125 
                             transition-all duration-100"
+                width={30}
+                height={30}
             />
         </button>
     );
@@ -62,6 +68,8 @@ export const ChapterDeleteButton: React.FC<Props> = ({chapter, handleClick}) => 
                 className="h-10 
                             group-hover:scale-110 group-hover:drop-shadow-lg group-hover:brightness-125 
                             transition-all duration-100"
+                width={30}
+                height={30}
             />
         </button>
     );
