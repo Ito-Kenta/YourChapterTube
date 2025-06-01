@@ -9,11 +9,14 @@ const SetVideoUrl: React.FC<Props> = ({ onChange }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const match = input.match(/[?&]v=([^&#]+)/);
+        const regex = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([a-zA-Z0-9_-]{11})(?:\S+)?/;
+        const match = input.match(regex);
+        console.log(match)
         if (!match || !match[1] || match[1].includes("/")) {
             alert("正しいYouTube動画URLを入力してください");
             return;
         }
+        console.log(match[1])
         onChange(match[1]);
     };
 
